@@ -1,0 +1,64 @@
+# Betslip Generator – Dynamic Match Generation Based on Slider
+
+## Goal
+
+Implement functionality where the **slider controls how many matches are generated**.  
+Also allow the user to **adjust the number of matches inside the modal**, and dynamically **update the Selections counter**.
+
+---
+
+## Functional Requirements
+
+1. **Slider Behavior**
+   - The slider allows selecting a number between 2 and 1000.
+   - When the user selects a value (e.g. 14), **generate exactly 14 match items** and display them in the modal.
+   - This happens both:
+     - On initial "Generate" button click
+     - When changing the slider value inside the modal
+
+2. **Match List**
+   - Each generated match is a placeholder match (e.g., "Team A vs Team B", with fake data or mocked fixtures).
+   - Matches are rendered as cards or list items.
+   - The total number of matches must always match the selected value.
+
+3. **Selections Counter**
+   - Below the slider, show a "Selections" value that reflects the **current number of generated matches**.
+   - When the slider is moved, this number should update live.
+   - If the number of matches is adjusted via input or interaction, it should also update `Selections`.
+
+---
+
+## State Management
+
+Use a central state object like:
+
+```ts
+interface BetslipState {
+  selectedOdds: number;
+  targetOdds: number;
+  actualOdds: number;
+  selections: number; // ← This should always equal the number of matches shown
+  matches: Match[];   // ← Dynamically generated based on the slider
+  isGenerating: boolean;
+}
+```
+
+Update the `matches` array and `selections` count whenever the slider or manual odds input changes.
+
+---
+
+## UI Integration
+
+- Slider and input are part of the modal.
+- Match list appears below odds and slider section.
+- Modal is shown only when clicking the "Generate" button.
+- Modal is hidden by default.
+
+---
+
+## Design & Constraints
+
+- Match the UI structure and design of the modal shown in the screenshot.
+- Use only components and styles already defined in the project.
+- Use project-defined tokens for colors, spacing, and typography.
+- Ensure responsive layout and consistent UX on mobile and desktop.
