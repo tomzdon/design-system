@@ -1,4 +1,3 @@
-
 import { FC, useState, ChangeEvent, useEffect } from 'react';
 import { Button } from '../../Button/Button';
 import clsx from 'clsx';
@@ -87,7 +86,9 @@ export const BetslipModal: FC<BetslipModalProps> = ({
     <div className="fixed inset-0 bg-black/60 flex items-end animate-slide-up">
       <div className="bg-white rounded-t-lg w-full max-w-[700px] mx-auto shadow-xl flex flex-col max-h-[90vh]">
         <div className="sticky top-0 z-10 bg-white rounded-t-lg">
-          <div className="h-1 bg-lighter rounded-t-lg cursor-grab"></div>
+          <div className="w-full flex justify-center">
+            <div className="h-1 w-40 mt-2 flex  bg-lighter rounded-t-lg cursor-grab"></div>
+          </div>
           <div className="flex items-center justify-between p-4 border-b border-lighter">
             <h2 className="text-20 font-bold text-darker">Generate betslip</h2>
             <button
