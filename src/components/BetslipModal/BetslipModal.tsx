@@ -98,27 +98,29 @@ export const BetslipModal: FC<BetslipModalProps> = ({
 
         <div className="overflow-y-auto flex-1">
           <div className="p-4">
-            <div className="flex items-center gap-4 bg-lightest rounded-lg p-4">
-              <span className="text-14 text-dark">{2}</span>
-              <div className="flex-1">
+            <div className="bg-lightest rounded-lg p-4 mb-6">
+              <div className="flex items-center gap-4 bg-white rounded-lg p-4">
+                <span className="text-14 text-dark">{2}</span>
+                <div className="flex-1">
+                  <input
+                    type="range"
+                    min={2}
+                    max={1000}
+                    value={value}
+                    onChange={(e) => setValue(Number(e.target.value))}
+                    className="w-full appearance-none h-2 bg-lighter rounded-lg accent-primary"
+                  />
+                </div>
+                <span className="text-14 text-dark">{1000}</span>
                 <input
-                  type="range"
+                  type="number"
                   min={2}
                   max={1000}
                   value={value}
-                  onChange={(e) => setValue(Number(e.target.value))}
-                  className="w-full appearance-none h-2 bg-lighter rounded-lg accent-primary"
+                  onChange={handleInputChange}
+                  className="w-20 p-2 border border-lighter rounded-lg text-center"
                 />
               </div>
-              <span className="text-14 text-dark">{1000}</span>
-              <input
-                type="number"
-                min={2}
-                max={1000}
-                value={value}
-                onChange={handleInputChange}
-                className="w-20 p-2 border border-lighter rounded-lg text-center"
-              />
             </div>
 
             <div className="grid grid-cols-3 divide-x divide-lighter text-center my-6 border-b border-lighter pb-6">
