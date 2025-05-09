@@ -78,13 +78,15 @@ input[type="range"] {
   }
 
   &::-webkit-slider-runnable-track {
-    background: transparent;
+    background: var(--lighter);
     height: 2px;
+    border-radius: 1px;
   }
 
   &::-moz-range-track {
-    background: transparent;
+    background: var(--lighter);
     height: 2px;
+    border-radius: 1px;
   }
 }
 

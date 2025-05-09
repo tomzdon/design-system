@@ -1,5 +1,4 @@
-
-import { FC } from 'react';
+import { FC, useState, ChangeEvent } from 'react';
 import { Button } from '../../Button/Button';
 import clsx from 'clsx';
 
@@ -10,21 +9,34 @@ interface BetslipModalProps {
 
 export const BetslipModal: FC<BetslipModalProps> = ({
   onClose,
-  value = 14,
+  value: initialValue = 14,
 }) => {
+  const [value, setValue] = useState(initialValue);
+
+  const handleSliderChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setValue(Number(e.target.value));
+  };
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const newValue = Number(e.target.value);
+    if (newValue >= 2 && newValue <= 1000) {
+      setValue(newValue);
+    }
+  };
+
   return (
     <div className="fixed inset-0 bg-black/60 flex items-end animate-slide-up">
       <div className="bg-white rounded-t-lg w-full max-w-[700px] mx-auto shadow-xl">
         <div className="h-1 bg-lighter rounded-t-lg cursor-grab"></div>
-        <div className="flex items-center justify-between p-4 mb-2">
+        <div className="flex items-center justify-between p-4">
           <h2 className="text-20 font-bold text-darker">Generate betslip</h2>
           <button onClick={onClose} className="text-24 text-dark hover:text-darker">
             ×
           </button>
         </div>
 
-        <div className="px-6 pb-6 border-b border-lighter">
-          <div className="bg-lightest rounded-lg p-4">
+        <div className="px-6">
+          <div className="bg-lightest rounded-lg p-4 mb-6">
             <div className="flex items-center gap-4">
               <span className="text-14 text-dark">2</span>
               <div className="w-full bg-lighter rounded-full h-2">
@@ -33,6 +45,7 @@ export const BetslipModal: FC<BetslipModalProps> = ({
                   min={2}
                   max={1000}
                   value={value}
+                  onChange={handleSliderChange}
                   className="w-full h-2 bg-transparent rounded-full accent-success"
                 />
               </div>
@@ -40,12 +53,13 @@ export const BetslipModal: FC<BetslipModalProps> = ({
               <input
                 type="number"
                 value={value}
+                onChange={handleInputChange}
                 className="w-16 p-2 border border-success bg-white rounded text-center"
               />
             </div>
           </div>
 
-          <div className="grid grid-cols-3 divide-x divide-lighter text-center mt-6">
+          <div className="grid grid-cols-3 divide-x divide-lighter text-center border-b border-lighter pb-6">
             <div>
               <div className="text-16 font-bold mb-1">14.00</div>
               <div className="text-14 text-dark">Target odds</div>
@@ -61,7 +75,7 @@ export const BetslipModal: FC<BetslipModalProps> = ({
           </div>
         </div>
 
-        <div className="max-h-[400px] overflow-y-auto">
+        <div className="max-h-[400px] overflow-y-auto p-4">
           {[1, 2].map((i) => (
             <div key={i} className="p-4 border-b border-lighter">
               <div className="flex items-center justify-between mb-2">
