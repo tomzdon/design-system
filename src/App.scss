@@ -3,33 +3,6 @@
 @tailwind utilities;
 
 :root {
-  --primary: #8CE563;
-  --primary-medium: #7AD154;
-  --primary-dark: #69BD43;
-  --primary-light: #9EE97A;
-  --primary-lighter: #B0ED91;
-
-  --light: #757575;
-  --lighter: #E5E5E5;
-  --lightest: #F5F5F5;
-  --white: #FFFFFF;
-  --neutral: #999999;
-
-  --dark: #333333;
-  --darker: #222222;
-  --dark-alt: #444444;
-  --dark-medium: #666666;
-
-  --purple: #9B51E0;
-}
-
-body {
-  @apply text-dark;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-:root {
   --primary: #9ce800;
   --primary-medium: #84a14b;
   --primary-dark: #8dc63f;
