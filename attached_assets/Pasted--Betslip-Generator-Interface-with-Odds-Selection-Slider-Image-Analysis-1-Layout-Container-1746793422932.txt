@@ -1,0 +1,99 @@
+# Betslip Generator Interface with Odds Selection Slider
+
+## Image Analysis
+
+1. **Layout & Container**:
+   - Modal/dialog container with rounded top corners and drop shadow
+   - White background (#FFFFFF)
+   - Top grey drag handle for repositioning
+   - Responsive width, likely ~700px on desktop
+
+2. **Header**:
+   - Title: “Generate betslip”
+   - Close (X) icon aligned to the right
+
+3. **Slider Area**:
+   - Horizontal range slider (2–1000) with:
+     - Lime green track (#8CE563 or corresponding design token)
+     - Circular slider thumb in matching green
+   - Numeric value (target odds) input on the right with green border
+
+4. **Stats Summary**:
+   - Target odds, actual odds, and selections displayed in three columns
+   - Values (e.g. 14.00) in bold
+   - Light grey divider line below slider section
+
+5. **Match List Items**:
+   - Time & date on the left (e.g., 12:00pm Tue 15/12)
+   - League info: “Football / UEFA Europa League”
+   - Bet description bolded: “Both teams to score - Full Time - Yes 🔥”
+   - Purple upward icon next to date (e.g., popular match indicator)
+   - Grey pill badge on the right with decimal odds (e.g., 1.73)
+
+6. **Action Button**:
+   - Full-width button at the bottom with lime background (e.g., #8CE563)
+   - Uppercase bold text: “LOAD BETSLIP”
+
+7. **Colors (to be mapped to design tokens)**:
+   - Background: #FFFFFF
+   - Slider track: #E5E5E5
+   - Slider dot and button background: #8CE563
+   - Input border: lime green
+   - Text: #333333
+   - Badge: dark grey
+   - Divider: light grey
+
+8. **Typography**:
+   - Font sizes vary (title vs. match details vs. odds)
+   - Text styles include bold, regular, and accent colors/icons
+
+9. **Design Requirements**:
+   - Use only colors defined in the project's design tokens.
+   - Use only components already defined and implemented in the project.
+
+## Development Planning
+
+1. **Key Features**:
+   - Odds range slider with real-time updates
+   - Match selection system
+   - Odds calculation engine
+   - Betslip generation
+   - Match data management
+
+2. **State Management**:
+
+```ts
+interface BetslipState {
+  selectedOdds: number;
+  targetOdds: number;
+  actualOdds: number;
+  selections: number;
+  matches: Match[];
+  isGenerating: boolean;
+}
+```
+
+3. **Component Architecture**:
+   - `BetslipModal` (container)
+     - `OddsSlider`
+     - `OddsDisplay`
+     - `MatchList`
+     - `ActionButton`
+
+4. **Responsive Breakpoints**:
+
+```scss
+$breakpoints: (
+  'mobile': 320px,
+  'tablet': 768px,
+  'desktop': 1024px,
+  'wide': 1440px
+);
+```
+
+5. **UI Interaction Requirements**:
+   - **When the "Generate" button is clicked, the betslip generator modal must appear.**
+
+6. **Design Requirements**:
+   - Use only colors defined in the project's design tokens.
+   - Use only components already defined and implemented in the project.
