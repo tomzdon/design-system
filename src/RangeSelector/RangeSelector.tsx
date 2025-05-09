@@ -62,6 +62,7 @@ export const RangeSelector = ({
         <>
           <div className="mb-6">
             <div className="flex items-center gap-4">
+              <span className="text-14 text-dark">{min}</span>
               <input
                 type="range"
                 min={min}
@@ -70,6 +71,7 @@ export const RangeSelector = ({
                 onChange={handleSliderChange}
                 className="w-full appearance-none h-2 bg-lighter rounded-lg accent-primary"
               />
+              <span className="text-14 text-dark">{max}</span>
               <input
                 type="number"
                 min={min}
