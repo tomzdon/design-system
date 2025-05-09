@@ -1,16 +1,21 @@
 
+import { useState } from 'react';
 import './App.scss';
-import { RangeSelector } from './RangeSelector/RangeSelector';
+import { Button } from './Button/Button';
+import { BetslipModal } from './components/BetslipModal/BetslipModal';
 
 function App() {
-  const handleGenerate = (value: number) => {
-    console.log('Generated value:', value);
-  };
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <div className="min-h-screen bg-lighter p-4">
       <div className="max-w-[700px] mx-auto">
-        <RangeSelector onGenerate={handleGenerate} />
+        <Button 
+          title="Generate Betslip" 
+          variant="primary" 
+          onClick={() => setShowModal(true)}
+        />
+        {showModal && <BetslipModal onClose={() => setShowModal(false)} />}
       </div>
     </div>
   );
