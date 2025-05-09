@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+::root {
     --primary: #9ce800;
     --primary-medium: #84a14b;
     --primary-dark: #8dc63f;
@@ -39,4 +39,32 @@
     --purple: #831aed;
     --orange: #ff7a00;
     --yellow: #feba0c;
+}
+
+input[type="range"] {
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #8CE563;
+    cursor: pointer;
+  }
+
+  &::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #8CE563;
+    cursor: pointer;
+    border: none;
+  }
+}
+
+input[type="number"] {
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    opacity: 1;
+  }
 }
