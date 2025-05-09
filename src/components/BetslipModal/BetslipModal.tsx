@@ -170,12 +170,10 @@ export const BetslipModal: FC<BetslipModalProps> = ({
           </div>
         </div>
 
-        <div className="sticky bottom-0 z-10 bg-white border-t border-lighter">
-          <Button
-            title="LOAD BETSLIP"
-            variant="primary"
-            className="w-full py-4 uppercase font-bold text-darker"
-          />
+        <div className="sticky-bottom-container">
+          <button className="betslip-button">
+            LOAD BETSLIP
+          </button>
         </div>
       </div>
     </div>
