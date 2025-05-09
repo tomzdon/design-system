@@ -101,30 +101,6 @@ input[type="range"] {
   }
 }
 
-.sticky-bottom-container {
-  position: sticky;
-  bottom: 0;
-  background: var(--white);
-  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
-  padding: var(--md);
-  border-top: 1px solid var(--lighter);
-  z-index: 10;
-}
-
-.betslip-button {
-  background: var(--success);
-  border-radius: 4px;
-  font-weight: bold;
-  text-transform: uppercase;
-  padding: var(--md);
-  width: 100%;
-  transition: background 0.2s;
-  
-  &:hover {
-    background: var(--success-dark);
-  }
-}
-
 input[type="number"] {
 
   &::-webkit-inner-spin-button,
