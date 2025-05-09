@@ -1,7 +1,7 @@
+
 import { FC, useState, ChangeEvent, useEffect } from 'react';
 import { Button } from '../../Button/Button';
 import clsx from 'clsx';
-import { RangeSelector } from '../../RangeSelector/RangeSelector';
 
 interface Match {
   id: number;
@@ -16,15 +16,28 @@ interface Match {
 
 interface BetslipModalProps {
   onClose: () => void;
-  value?: number;
+  initialRange: number;
 }
 
 export const BetslipModal: FC<BetslipModalProps> = ({
   onClose,
-  value: initialValue = 14,
+  initialRange,
 }) => {
-  const [value, setValue] = useState(initialValue);
+  const [value, setValue] = useState(initialRange);
   const [matches, setMatches] = useState<Match[]>([]);
+
+  const clampValue = (val: number) => Math.min(Math.max(val, 2), 1000);
+
+  const handleSliderChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setValue(clampValue(Number(e.target.value)));
+  };
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const newValue = Number(e.target.value);
+    if (!isNaN(newValue)) {
+      setValue(clampValue(newValue));
+    }
+  };
 
   const generateMatches = (count: number) => {
     const teams = [
@@ -68,17 +81,6 @@ export const BetslipModal: FC<BetslipModalProps> = ({
     setMatches(generateMatches(value));
   }, [value]);
 
-  const handleSliderChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(Number(e.target.value));
-  };
-
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const newValue = Number(e.target.value);
-    if (newValue >= 2 && newValue <= 1000) {
-      setValue(newValue);
-    }
-  };
-
   const actualOdds = matches.reduce((acc, match) => acc * match.odds, 1);
 
   return (
@@ -107,7 +109,7 @@ export const BetslipModal: FC<BetslipModalProps> = ({
                     min={2}
                     max={1000}
                     value={value}
-                    onChange={(e) => setValue(Number(e.target.value))}
+                    onChange={handleSliderChange}
                     className="w-full appearance-none h-2 bg-lighter rounded-lg accent-primary"
                   />
                 </div>
