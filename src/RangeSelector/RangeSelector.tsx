@@ -9,6 +9,9 @@ type RangeSelectorProps = {
   defaultValue?: number;
   onGenerate?: (value: number) => void;
   className?: string;
+  showTitle?: boolean;
+  showGenerateButton?: boolean;
+  onChange?: (value: number) => void;
 };
 
 export const RangeSelector = ({
@@ -17,35 +20,43 @@ export const RangeSelector = ({
   defaultValue = 2,
   onGenerate,
   className,
+  showTitle = true,
+  showGenerateButton = true,
+  onChange,
 }: RangeSelectorProps) => {
   const [value, setValue] = useState(defaultValue);
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   const handleSliderChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(Number(e.target.value));
+    const newValue = Number(e.target.value);
+    setValue(newValue);
+    onChange?.(newValue);
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = Number(e.target.value);
     if (newValue >= min && newValue <= max) {
       setValue(newValue);
+      onChange?.(newValue);
     }
   };
 
   return (
     <div className={clsx('bg-white rounded-lg shadow-md p-5', className)}>
-      <div className="flex justify-between items-center mb-6">
-        <div className="flex items-center gap-2">
-          <h2 className="text-darker text-lg font-medium">Bet Builder</h2>
-          <span className="cursor-pointer">ⓘ</span>
+      {showTitle && (
+        <div className="flex justify-between items-center mb-6">
+          <div className="flex items-center gap-2">
+            <h2 className="text-darker text-lg font-medium">Bet Builder</h2>
+            <span className="cursor-pointer">ⓘ</span>
+          </div>
+          <button 
+            onClick={() => setIsCollapsed(!isCollapsed)}
+            className="text-darker"
+          >
+            {isCollapsed ? '▼' : '▲'}
+          </button>
         </div>
-        <button 
-          onClick={() => setIsCollapsed(!isCollapsed)}
-          className="text-darker"
-        >
-          {isCollapsed ? '▼' : '▲'}
-        </button>
-      </div>
+      )}
       
       {!isCollapsed && (
         <>
@@ -70,13 +81,15 @@ export const RangeSelector = ({
             </div>
           </div>
           
-          <div className="flex justify-end">
-            <Button
-              variant="secondary"
-              title="Generate"
-              onClick={() => onGenerate?.(value)}
-            />
-          </div>
+          {showGenerateButton && (
+            <div className="flex justify-end">
+              <Button
+                variant="secondary"
+                title="Generate"
+                onClick={() => onGenerate?.(value)}
+              />
+            </div>
+          )}
         </>
       )}
     </div>
