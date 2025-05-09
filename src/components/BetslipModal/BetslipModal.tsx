@@ -1,3 +1,4 @@
+
 import { FC } from 'react';
 import { Button } from '../../Button/Button';
 import clsx from 'clsx';
@@ -12,63 +13,65 @@ export const BetslipModal: FC<BetslipModalProps> = ({
   value = 14,
 }) => {
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
-      <div className="bg-white rounded-t-lg w-full max-w-[700px] shadow-lg">
+    <div className="fixed inset-0 bg-black/60 flex items-end z-50 animate-slide-up">
+      <div className="bg-white rounded-t-lg w-full max-w-[700px] mx-auto shadow-lg">
         <div className="flex items-center justify-between p-4 border-b border-lighter">
-          <h2 className="text-20 font-medium text-darker">Generate betslip</h2>
-          <button onClick={onClose} className="text-24 text-dark">
+          <h2 className="text-xl font-medium text-darker">Generate betslip</h2>
+          <button onClick={onClose} className="text-2xl text-dark hover:text-darker">
             &times;
           </button>
         </div>
 
-        <div className="p-4 border-b border-lighter">
+        <div className="p-4 border-b border-lighter bg-gray-50 rounded-lg mx-4 my-3">
           <div className="flex items-center gap-4 mb-6">
-            <span className="text-14">2</span>
-            <input
-              type="range"
-              min={2}
-              max={1000}
-              value={value}
-              className="w-full h-2 bg-lighter rounded accent-primary"
-            />
-            <span className="text-14">1000</span>
+            <span className="text-sm text-dark">2</span>
+            <div className="flex-1">
+              <input
+                type="range"
+                min={2}
+                max={1000}
+                value={value}
+                className="w-full h-2 bg-[#E5E5E5] rounded-lg appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#8CE563] cursor-pointer"
+              />
+            </div>
+            <span className="text-sm text-dark">1000</span>
             <input
               type="number"
               value={value}
-              className="w-16 p-2 border border-primary rounded text-center"
+              className="w-16 p-2 border border-[#8CE563] rounded text-center"
             />
           </div>
 
           <div className="grid grid-cols-3 text-center">
             <div>
-              <div className="text-14 text-dark mb-1">Target odds:</div>
-              <div className="text-16 font-bold">14.00</div>
+              <div className="text-xl font-bold mb-1">14.00</div>
+              <div className="text-sm text-dark">Target odds</div>
             </div>
             <div>
-              <div className="text-14 text-dark mb-1">Actual odds:</div>
-              <div className="text-16 font-bold">14.18</div>
+              <div className="text-xl font-bold mb-1">14.18</div>
+              <div className="text-sm text-dark">Actual odds</div>
             </div>
             <div>
-              <div className="text-14 text-dark mb-1">Selections:</div>
-              <div className="text-16 font-bold">14</div>
+              <div className="text-xl font-bold mb-1">14</div>
+              <div className="text-sm text-dark">Selections</div>
             </div>
           </div>
         </div>
 
-        <div className="max-h-[400px] overflow-y-auto">
+        <div className="max-h-[400px] overflow-y-auto divide-y divide-lighter">
           {[1, 2].map((i) => (
-            <div key={i} className="p-4 border-b border-lighter">
+            <div key={i} className="p-4">
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2">
-                  <span className="text-14">12:00pm Tue 15/12</span>
+                  <span className="text-sm text-dark">12:00pm Tue 15/12</span>
                   <span className="text-purple-500">↑</span>
                 </div>
-                <span className="px-3 py-1 bg-dark/10 rounded-full text-14">
+                <span className="px-3 py-1 bg-dark/10 rounded-full text-sm">
                   1.73
                 </span>
               </div>
-              <div className="mb-1">Manchester United - Athletic Bilbao</div>
-              <div className="text-14 text-dark mb-1">
+              <div className="font-bold mb-1">Manchester United – Athletic Bilbao</div>
+              <div className="text-sm text-dark mb-1">
                 Football / UEFA Europa League
               </div>
               <div className="font-bold">
@@ -78,11 +81,9 @@ export const BetslipModal: FC<BetslipModalProps> = ({
           ))}
         </div>
 
-        <Button
-          title="LOAD BETSLIP"
-          variant="primary"
-          className="w-full rounded-none py-4 uppercase"
-        />
+        <button className="w-full py-4 bg-[#8CE563] font-bold uppercase text-darker rounded-b-lg">
+          Load Betslip
+        </button>
       </div>
     </div>
   );
