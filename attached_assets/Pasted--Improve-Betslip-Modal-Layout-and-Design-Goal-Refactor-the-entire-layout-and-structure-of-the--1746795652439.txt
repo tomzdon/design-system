@@ -1,0 +1,70 @@
+# Improve Betslip Modal Layout and Design
+
+## Goal
+
+Refactor the entire layout and structure of the **Betslip Generator Modal** to follow the design and behavior below:
+
+---
+
+## Layout & Section Structure
+
+The modal should be structured as follows, with **each section separated by a light horizontal divider**:
+
+1. **Header (fixed)**
+   - Text: `Generate betslip` (left-aligned, bold)
+   - Close icon (`X`) on the right
+   - Light grey background
+   - This section must be **always visible** (sticky at the top)
+
+2. **Slider Section**
+   - Use the **same slider component** from the homepage.
+   - **Do not include** the title or the "Generate" button.
+   - Keep the value input on the right.
+   - Light background container with padding and rounded corners.
+
+3. **Total / Odds Summary Section**
+   - Display 3 columns:
+     - Target odds
+     - Actual odds
+     - Selections
+   - Bold numbers on top (e.g., 14.18)
+   - Smaller labels below
+   - Separated by vertical lines
+   - Divider below
+
+4. **Match List**
+   - Dynamically generated matches based on slider value.
+   - Styled as separate rows/cards.
+   - Divider between each match.
+
+5. **Bottom Button (fixed)**
+   - Full-width button: `LOAD BETSLIP`
+   - Sticky at the bottom of the modal
+   - Always visible, even when scrolling
+   - Use project color token for background (lime green)
+
+---
+
+## Scroll Behavior
+
+- Only the **section between the header and bottom button should scroll** (slider, odds summary, match list).
+- Header and Load Betslip button must **remain fixed** while scrolling the rest.
+
+---
+
+## Visual Design
+
+- Use light grey (`#E5E5E5` or token) for horizontal dividers.
+- Use padding and spacing tokens from the design system.
+- Modal should have rounded corners and soft drop shadow.
+- All components (slider, buttons, inputs) must be reused from existing app.
+- Typography and spacing should match the rest of the app.
+
+---
+
+## Constraints
+
+- Do not create new components if existing ones can be reused.
+- Use only project-defined color tokens, spacing, and fonts.
+- Ensure full responsiveness on both mobile and desktop.
+- Modal should be hidden by default and only open when "Generate" is clicked.
