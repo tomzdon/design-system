@@ -1,7 +1,7 @@
-
 import { FC, useState, ChangeEvent, useEffect } from 'react';
 import { Button } from '../../Button/Button';
 import clsx from 'clsx';
+import { RangeSelector } from '../../RangeSelector/RangeSelector';
 
 interface Match {
   id: number;
@@ -27,9 +27,30 @@ export const BetslipModal: FC<BetslipModalProps> = ({
   const [matches, setMatches] = useState<Match[]>([]);
 
   const generateMatches = (count: number) => {
-    const teams = ['Manchester United', 'Liverpool', 'Arsenal', 'Chelsea', 'Barcelona', 'Real Madrid', 'Bayern Munich', 'PSG'];
-    const leagues = ['Premier League', 'La Liga', 'Bundesliga', 'Ligue 1', 'UEFA Champions League'];
-    const markets = ['Both teams to score - Yes', 'Over 2.5 goals', 'Home win', 'Away win', 'Draw'];
+    const teams = [
+      'Manchester United',
+      'Liverpool',
+      'Arsenal',
+      'Chelsea',
+      'Barcelona',
+      'Real Madrid',
+      'Bayern Munich',
+      'PSG',
+    ];
+    const leagues = [
+      'Premier League',
+      'La Liga',
+      'Bundesliga',
+      'Ligue 1',
+      'UEFA Champions League',
+    ];
+    const markets = [
+      'Both teams to score - Yes',
+      'Over 2.5 goals',
+      'Home win',
+      'Away win',
+      'Draw',
+    ];
 
     return Array.from({ length: count }, (_, i) => ({
       id: i + 1,
@@ -67,7 +88,11 @@ export const BetslipModal: FC<BetslipModalProps> = ({
           <div className="h-1 bg-lighter rounded-t-lg cursor-grab"></div>
           <div className="flex items-center justify-between p-4 border-b border-lighter">
             <h2 className="text-20 font-bold text-darker">Generate betslip</h2>
-            <button onClick={onClose} className="text-24 text-dark hover:text-darker">×</button>
+            <button
+              onClick={onClose}
+              className="text-24 text-dark hover:text-darker">
+              ×
+            </button>
           </div>
         </div>
 
@@ -89,7 +114,9 @@ export const BetslipModal: FC<BetslipModalProps> = ({
                 <div className="text-14 text-dark">Target odds</div>
               </div>
               <div>
-                <div className="text-16 font-bold mb-1">{actualOdds.toFixed(2)}</div>
+                <div className="text-16 font-bold mb-1">
+                  {actualOdds.toFixed(2)}
+                </div>
                 <div className="text-14 text-dark">Actual odds</div>
               </div>
               <div>
@@ -103,7 +130,9 @@ export const BetslipModal: FC<BetslipModalProps> = ({
                 <div key={match.id} className="p-4 border-b border-lighter">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
-                      <span className="text-14">{match.time} {match.date}</span>
+                      <span className="text-14">
+                        {match.time} {match.date}
+                      </span>
                       <span className="text-purple">↑</span>
                     </div>
                     <span className="px-3 py-1 bg-dark/10 rounded-full text-14">
@@ -116,9 +145,7 @@ export const BetslipModal: FC<BetslipModalProps> = ({
                   <div className="text-14 text-dark mb-1">
                     Football / {match.league}
                   </div>
-                  <div className="font-bold">
-                    {match.market} 🔥
-                  </div>
+                  <div className="font-bold">{match.market} 🔥</div>
                 </div>
               ))}
             </div>
