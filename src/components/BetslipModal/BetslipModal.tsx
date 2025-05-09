@@ -73,28 +73,12 @@ export const BetslipModal: FC<BetslipModalProps> = ({
 
         <div className="overflow-y-auto flex-1">
           <div className="p-4">
-            <div className="bg-lightest rounded-lg p-4">
-              <div className="flex items-center gap-4">
-                <span className="text-14 text-dark">2</span>
-                <div className="w-full bg-lighter rounded-full h-2">
-                  <input
-                    type="range"
-                    min={2}
-                    max={1000}
-                    value={value}
-                    onChange={handleSliderChange}
-                    className="w-full h-2 bg-transparent rounded-full accent-success"
-                  />
-                </div>
-                <span className="text-14 text-dark">1000</span>
-                <input
-                  type="number"
-                  value={value}
-                  onChange={handleInputChange}
-                  className="w-16 p-2 border border-success bg-white rounded text-center"
-                />
-              </div>
-            </div>
+            <RangeSelector
+              min={2}
+              max={1000}
+              defaultValue={value}
+              className="!shadow-none !p-0 bg-lightest"
+            />
 
             <div className="grid grid-cols-3 divide-x divide-lighter text-center my-6 border-b border-lighter pb-6">
               <div>
