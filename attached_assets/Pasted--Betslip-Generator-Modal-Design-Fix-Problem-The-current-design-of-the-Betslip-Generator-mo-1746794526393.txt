@@ -1,0 +1,66 @@
+# Betslip Generator Modal – Design Fix
+
+## Problem
+
+The current design of the **Betslip Generator modal** does not match the expected visual styling:
+
+- The background contrast is too low (the entire page is darkened too heavily).
+- The slider design and input field styles are incorrect.
+- Fonts, paddings, spacing, and visual hierarchy differ from the expected design.
+
+## Goal
+
+Update the modal's layout and styles to match the design from the provided **second screenshot**.
+
+## Design Corrections
+
+1. **Modal Styling**
+   - Rounded top corners.
+   - Modal should slide in from the bottom.
+   - Use proper z-index and background overlay with soft opacity (`rgba(0,0,0,0.6)`).
+   - Light shadow around modal edges.
+   - Ensure the modal is scrollable if content overflows.
+
+2. **Slider Area**
+   - Slider track: light grey (`#E5E5E5`)
+   - Slider dot: lime green (`#8CE563`)
+   - Green border around the odds input field.
+   - Numbers (2 and 1000) must align vertically with the slider.
+   - The slider section should have a light background box with padding and rounded corners.
+
+3. **Odds Summary Section**
+   - Display 3 columns: **Target odds**, **Actual odds**, **Selections**
+   - Use bold numbers (e.g. `14.00`, `14.18`) and label them below in smaller text
+   - Add horizontal divider line below this section (light grey)
+
+4. **Match List**
+   - Add padding between items
+   - Each item shows:
+     - Time and date with small purple up arrow icon
+     - Two team names in bold with spacing and `–` in the middle
+     - Competition info in smaller grey text
+     - Bet type bolded at the bottom with flame icon (🔥)
+
+5. **Bottom Action Button**
+   - Full width
+   - Lime green background (`#8CE563`)
+   - Text: bold, uppercase black text `LOAD BETSLIP`
+   - Rounded corners with consistent padding
+
+## Visual Guidelines
+
+- Match the layout exactly to the second screenshot.
+- Use only components and styles already defined in the project.
+- Use only color tokens from the project’s design system.
+- Typography should match: font sizes, weights, spacing.
+
+## UX Interaction
+
+- Modal should only appear when the existing “Generate” button is clicked.
+- Modal must be hidden by default.
+- Do not replace or affect the rest of the interface.
+
+## Notes
+
+Refer to the second screenshot as the correct visual baseline. The first screenshot is incorrect and should not be used as a reference.
+

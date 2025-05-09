@@ -1,4 +1,3 @@
-
 import { FC } from 'react';
 import { Button } from '../../Button/Button';
 import clsx from 'clsx';
@@ -8,15 +7,20 @@ interface BetslipModalProps {
   value?: number;
 }
 
-export const BetslipModal: FC<BetslipModalProps> = ({ onClose, value = 14 }) => {
+export const BetslipModal: FC<BetslipModalProps> = ({
+  onClose,
+  value = 14,
+}) => {
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
       <div className="bg-white rounded-t-lg w-full max-w-[700px] shadow-lg">
         <div className="flex items-center justify-between p-4 border-b border-lighter">
           <h2 className="text-20 font-medium text-darker">Generate betslip</h2>
-          <button onClick={onClose} className="text-24 text-dark">&times;</button>
+          <button onClick={onClose} className="text-24 text-dark">
+            &times;
+          </button>
         </div>
-        
+
         <div className="p-4 border-b border-lighter">
           <div className="flex items-center gap-4 mb-6">
             <span className="text-14">2</span>
@@ -28,7 +32,7 @@ export const BetslipModal: FC<BetslipModalProps> = ({ onClose, value = 14 }) => 
               className="w-full h-2 bg-lighter rounded accent-primary"
             />
             <span className="text-14">1000</span>
-            <input 
+            <input
               type="number"
               value={value}
               className="w-16 p-2 border border-primary rounded text-center"
@@ -59,16 +63,22 @@ export const BetslipModal: FC<BetslipModalProps> = ({ onClose, value = 14 }) => 
                   <span className="text-14">12:00pm Tue 15/12</span>
                   <span className="text-purple-500">↑</span>
                 </div>
-                <span className="px-3 py-1 bg-dark/10 rounded-full text-14">1.73</span>
+                <span className="px-3 py-1 bg-dark/10 rounded-full text-14">
+                  1.73
+                </span>
               </div>
               <div className="mb-1">Manchester United - Athletic Bilbao</div>
-              <div className="text-14 text-dark mb-1">Football / UEFA Europa League</div>
-              <div className="font-bold">Both teams to score - Full Time - Yes 🔥</div>
+              <div className="text-14 text-dark mb-1">
+                Football / UEFA Europa League
+              </div>
+              <div className="font-bold">
+                Both teams to score - Full Time - Yes 🔥
+              </div>
             </div>
           ))}
         </div>
 
-        <Button 
+        <Button
           title="LOAD BETSLIP"
           variant="primary"
           className="w-full rounded-none py-4 uppercase"

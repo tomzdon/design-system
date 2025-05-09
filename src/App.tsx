@@ -1,7 +1,7 @@
-
+import { useState } from 'react';
 import './App.scss';
 import { RangeSelector } from './RangeSelector/RangeSelector';
-
+import { BetslipModal } from './components/BetslipModal/BetslipModal';
 function App() {
   const [showModal, setShowModal] = useState(false);
 
